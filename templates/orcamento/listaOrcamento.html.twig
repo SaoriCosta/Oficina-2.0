@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" ></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <meta charset="UTF-8">
+        <title>Cadastrar Orçamento</title>
+
+
+<script>
+
+$(document).ready(function() {
+    $('#orcamento').DataTable({
+        "bInfo": false,
+        "bLengthChange": false,
+        language: {
+                   paginate: {
+                     first:    "Primeiro",
+                     previous: "Anterior",
+                     next:     "Próximo",
+                     last:     "Último",
+                   }
+            }
+    }
+    );
+} );
+
+</script>
+    </head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a href="/" class="navbar-brand">Orçamento</a>
+  <a class="nav-item nav-link" href="/listaOrcamento" class="navbar-brand">Lista orcamento</a>
+  <a class="nav-item nav-link" href="/filtroOrcamento" class="navbar-brand">Filtros</a>
+
+</nav>
+
+<div class="container">
+
+<br>
+
+<table id="orcamento" class="display" style="width:100%">
+
+        <thead>
+             <tr>
+                <th>Cliente</th>
+                <th>Data e hora</th>
+                <th>Vendedor</th>
+                <th>Descrição</th>
+                <th>Valor orçado</th>
+                <th></th>
+                <th></th>
+        </tr>
+
+        </thead>
+        <tbody>
+{% for orcamento in orcamentos %}
+           
+             <tr>
+                <td>{{orcamento.cliente}}</td>
+                <td>{{orcamento.data}}</td>
+                <td>{{orcamento.vendedor}}</td>
+                <td>{{orcamento.descricao}}</td>
+                <td>{{orcamento.valor}}</td>
+                <td><a class="btn btn-primary" href="/getOrcamento/{{orcamento.id}}">Editar</a></td>
+                <td><a class="btn btn-danger" href="/excluirOrcamento/{{orcamento.id}}">Excluir</a></td>
+        </tr>
+
+      
+        {% endfor %}
+        
+</table>
+
+</div class="container">
+</body>
+</html>

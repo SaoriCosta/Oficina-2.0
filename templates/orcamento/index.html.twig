@@ -1,0 +1,207 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Cadastrar Orçamento</title>
+    </head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a href="/" class="navbar-brand">Orçamento</a>
+  <a class="nav-item nav-link" href="/listaOrcamento" class="navbar-brand">Lista orcamento</a>
+  <a class="nav-item nav-link" href="/filtroOrcamento" class="navbar-brand">Filtros</a>
+</nav>
+
+<div class="container">
+
+{% if mensagem != null %}
+   <spam class="bg-danger">{{mensagem}}</spam> 
+{% endif %}
+
+{% if orcamento != null %}
+
+
+<form name="orcamento" method="post" action="/atualizarOrcamento"  enctype="multipart/form-data">
+	
+<br>   
+<div class="row">
+
+    <div class="col-md-6">
+         <h3 class="text-center">Atualizar de Orcamento</h3>
+        <div class="form-group">
+            <label for="cliente">Cliente*</label>
+            <input value = "{{orcamento.cliente}}" class="form-control" name="cliente" type="text" id="cliente" />
+        </div>
+
+        </div>
+    </div>
+<input value = "{{orcamento.id}}"  class="form-control" name="id" type="hidden" id="id" />
+        
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="data">Data*</label>
+            <input value = "{{orcamento.data}}"  class="form-control" name="data" type="date" id="data" />
+        </div>
+
+    </div>
+</div>
+    
+ <div class="row">
+     <div class="col-md-6">
+        <div class="form-group">
+        <label for="vendedor">Vendedor*</label>
+        <input value = "{{orcamento.vendedor}}" class="form-control" name="vendedor" type="text" id="vendedor" />
+    </div>
+
+     </div>
+
+ </div>
+    
+ <div class="row">
+     <div class="col-md-6">
+        <div class="form-group">
+        <label for="descricao">Descrição*</label>
+        <input value = "{{orcamento.descricao}}" class="form-control" name="descricao" type="text"  id="descricao" />
+    </div>
+
+     </div>
+
+ </div>
+ 
+
+ <div class="row">
+     <div class="col-md-6">
+        <div class="form-group">
+        <label for="valor">Valor Orçado*</label>
+        <input value = "{{orcamento.valor}}" class="form-control" name="valor" type="number" min="0" step="any" id="valor" />
+    </div>
+
+     </div>
+
+ </div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div >
+        <button class="btn btn-primary float-right" type="submit">Salvar</button>
+    </div>
+    </div>
+</div>
+
+</form>
+
+{% endif %}
+
+<form name="orcamento" method="post" action="/orcamento"  onsubmit="valida()" enctype="multipart/form-data">
+	
+<br>   
+<div class="row">
+
+    <div class="col-md-6">
+         <h3 class="text-center">Cadastro de Orcamento</h3>
+        <div class="form-group">
+            <label for="cliente">Cliente*</label>
+            <input required class="form-control" name="cliente" type="text" id="cliente" />
+        </div>
+
+        </div>
+    </div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="data">Data*</label>
+            <input  required class="form-control" name="data" type="date" id="data" />
+        </div>
+
+    </div>
+</div>
+    
+ <div class="row">
+     <div class="col-md-6">
+        <div class="form-group">
+        <label for="vendedor">Vendedor*</label>
+        <input required class="form-control" name="vendedor" type="text" id="vendedor" />
+    </div>
+
+     </div>
+
+ </div>
+    
+ <div class="row">
+     <div class="col-md-6">
+        <div class="form-group">
+        <label for="descricao">Descrição*</label>
+        <input required class="form-control" name="descricao" type="text"  id="descricao" />
+    </div>
+
+     </div>
+
+ </div>
+ 
+
+ <div class="row">
+     <div class="col-md-6">
+        <div class="form-group">
+        <label for="valor">Valor Orçado*</label>
+        <input placeholder="0,0" required class="form-control" name="valor" type="number" min="0" step="any" id="valor" />
+    </div>
+
+     </div>
+
+ </div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div >
+        <button class="btn btn-primary float-right" type="submit">Cadastrar</button>
+    </div>
+    </div>
+</div>
+
+</form>
+<br>
+<br>
+
+</div>
+
+</div class="container">
+
+</div>
+
+<script>
+function valida(event){
+    if(document.getElementById("cliente").value == ''){
+       $("#cliente").css("border-color", "red");
+    }
+    if(document.getElementById("vendedor").value == ''){
+       $("#vendedor").css("border-color", "red");
+    }
+     if(document.getElementById("data").value == ''){
+       $("#data").css("border-color", "red");
+    }
+     if(document.getElementById("descricao").value == ''){
+       $("#descricao").css("border-color", "red");
+    }
+     if(document.getElementById("valor").value == ''){
+       $("#valor").css("border-color", "red");
+    }
+}
+
+</script>
+
+</body>
+
+</html>
+
+
+
+
+
