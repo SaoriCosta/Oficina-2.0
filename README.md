@@ -1,6 +1,8 @@
 # Oficina-2.0
 
-Instalações para executar o projeto:
+O projeto tem por objetivo realizar o cadastro de orçamento de uma oficina, ou seja, o usuário poderá cadastrar um novo orçamento, deletar orçamento, pesquisar e atualizar um orçamento. Além disso, haverá filtros por intervalo de datas, vendedor e cliente de um orçamento. Além disso, é utilizado a arquitetura MVC para organização do código.
+
+# Instalações para executar o projeto:
 
 ## Download Composer(Linux):
 
