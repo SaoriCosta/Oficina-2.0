@@ -50,13 +50,9 @@ $ php bin/console doctrine:migrations:migrate
 
 Para mais informações acessar link: https://symfony.com/doc/current/doctrine.html#installing-doctrine
 
-## Instalações de pacotes utilizados no projeto:
-
 Obs.: Se estiver utlizando Linux e for executar projeto como root utilize o comando a seguir:
 
     $ export COMPOSER_ALLOW_SUPERUSER=1; composer show;
-
-$ composer require symfony/http-foundationcomposer
 
 ## Execução do projeto:
 
