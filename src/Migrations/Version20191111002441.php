@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20191108134543 extends AbstractMigration
+final class Version20191111002441 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,7 +22,7 @@ final class Version20191108134543 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE orcamento CHANGE data_hora_orcamento data_hora_orcamento DATETIME NOT NULL');
+        $this->addSql('ALTER TABLE orcamento DROP data_orcamento');
     }
 
     public function down(Schema $schema) : void
@@ -30,6 +30,6 @@ final class Version20191108134543 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE orcamento CHANGE data_hora_orcamento data_hora_orcamento DATE NOT NULL');
+        $this->addSql('ALTER TABLE orcamento ADD data_orcamento DATETIME NOT NULL');
     }
 }

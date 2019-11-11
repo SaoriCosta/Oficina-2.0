@@ -141,13 +141,12 @@ class OrcamentoController extends AbstractController
         $cliente = $request->query->get('cliente');
         $vendedor = $request->query->get('vendedor');
         $format = "Y-m-d H:i:s";
-
-        $data_inicial = \DateTime::createFromFormat($format, $request->get('data_inicial'). ' 00:00:00');
-        $data_final = \DateTime::createFromFormat($format, $request->get('data_final'). ' 23:59:59');
-
+        
+        $data_inicial = \DateTime::createFromFormat($format, $request->get('data_inicial') . '00:00:00');
+        $data_final = \DateTime::createFromFormat($format, $request->get('data_final') . '00:00:00');
 
         $repositoryOrcamento = $this->getDoctrine()->getRepository(Orcamento::class);
-        $orcamentos = $repositoryOrcamento->filtrarOrcamento($cliente, $vendedor, $data_inicial, $data_final);
+        $orcamentos = $repositoryOrcamento->filtrarOrcamento($cliente, $vendedor, date_format($data_inicial,'Y-m-d'), date_format($data_final,'Y-m-d'));
         $arrayOrcamento = array();
         foreach ($orcamentos as $value) {
             $array = array(

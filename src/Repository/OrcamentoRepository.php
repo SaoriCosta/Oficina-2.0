@@ -89,9 +89,11 @@ class OrcamentoRepository extends ServiceEntityRepository
         if(!($vendedor == null || $vendedor == '')){
             $consulta .= 'o.vendedor = :vendedor and ';
         }
+        
         $consulta .= 'o.data_hora_orcamento BETWEEN :data_inicial and :data_final';
         
-       if(!($cliente == null || $cliente == '') && ($vendedor == null || $vendedor == '')){
+        
+        if(!($cliente == null || $cliente == '') && ($vendedor == null || $vendedor == '')){
 
             $query = $entityManager->createQuery($consulta)->setParameter('cliente', $cliente)
                                                            ->setParameter('data_inicial', $data_inicial)
@@ -110,10 +112,15 @@ class OrcamentoRepository extends ServiceEntityRepository
                                                            ->setParameter('data_final', $data_final)
                                                            ->setParameter('vendedor', $vendedor);
         }else{
+
+            
             $query = $entityManager->createQuery($consulta)->setParameter('data_inicial', $data_inicial)
                                                            ->setParameter('data_final', $data_final);
-                                                       
+        
         }
+        
+                                                    
+        
 
         return $query->getResult();
 

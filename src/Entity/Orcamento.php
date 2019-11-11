@@ -21,10 +21,10 @@ class Orcamento
      */
     private $cliente;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $data_hora_orcamento;
+    // /**
+    //  * @ORM\Column(type="datetime")
+    //  */
+    // private $data_hora_orcamento;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -40,6 +40,11 @@ class Orcamento
      * @ORM\Column(type="float")
      */
     private $valor_orcado;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $data_hora_orcamento;
 
     public function getId(): ?int
     {
@@ -60,19 +65,6 @@ class Orcamento
     public function setCliente(string $cliente): self
     {
         $this->cliente = $cliente;
-
-        return $this;
-    }
-
-    //: ?\DateTimeInterface
-    public function getDataHoraOrcamento(): ?\DateTime
-    {
-        return $this->data_hora_orcamento;
-    }
-   // \DateTimeInterface
-    public function setDataHoraOrcamento(?\DateTime $data_hora_orcamento): self
-    {
-        $this->data_hora_orcamento = $data_hora_orcamento;
 
         return $this;
     }
@@ -112,4 +104,17 @@ class Orcamento
 
         return $this;
     }
+
+    public function getDataHoraOrcamento(): ?\DateTimeInterface
+    {
+        return $this->data_hora_orcamento;
+    }
+
+    public function setDataHoraOrcamento(\DateTimeInterface $data_hora_orcamento): self
+    {
+        $this->data_hora_orcamento = $data_hora_orcamento;
+
+        return $this;
+    }
+
 }
