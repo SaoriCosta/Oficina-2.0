@@ -42,10 +42,6 @@ Após a configuração, o Doctrine irá criar o db_name dados db_name, conforme 
 
 $ php bin/console doctrine:database:create
 
-Para criar as entidades no projeto é necessário executar o comando abaixo, onde deverá ser informado o nome da entidade e seus atributos e tipos:
-
-$ php bin/console make:entity
-
 Para finalizar a criação da tabela no schema é necessário executar os comandos:
 
 $ php bin/console make:migration
